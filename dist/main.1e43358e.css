@@ -11931,5 +11931,35 @@ input[type="color"].form-control:disabled {
   background-color: #343a40;
 }
 
+a[data-v-34f63b], .btn-primaryyy[data-v-34f63b] {
+    background-color: #ec3360;
+    border-color: #ec3360;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: capitalize;
+    outline: none;
+    font-size: 16px;
+    line-height: 50px;
+    padding: 0 25px;
+}
+a[data-v-a92546], .btn-primaryyy[data-v-a92546] {
+    background-color: #ec3360;
+    border-color: #ec3360;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: capitalize;
+    outline: none;
+    font-size: 16px;
+    line-height: 50px;
+    padding: 0 25px;
+}
 
 /*# sourceMappingURL=/main.1e43358e.css.map */

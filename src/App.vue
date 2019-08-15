@@ -1,27 +1,44 @@
 <template>
     <div>
-        <h1>{{ message }}</h1>
-        <tes></tes>
+        <navbar @l="isLoginA($event)"></navbar>
+        <login v-if="onPage == 'home'"></login>
+        <loginForm v-bind:onPage="onPage" @p="isLoginA('home')" ></loginForm>
+        <!-- v-else-if="onPage == 'register' " -->
     </div>
 
 </template>
 
 <script>
 
-
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-import tes from './Login.vue'
+import navbar from './navbar.vue'
+import login from './Login.vue'
+import loginForm from './loginForm.vue'
 export default {
   data() {
     return {
-      message: 'Hello world',
+      message: 'Hello world'
     };
   },
   components : {
-      tes
+      navbar,
+      login,
+      loginForm
+  },
+  data : {
+    isLogin : false,
+    onPage : 'home'
+  },
+  methods : {
+    isLoginA(page){
+      this.onPage = page
+    }
+  },
+  created(){
+    if(localStorage.getItem('token')){
+      this.onPage = 'home'
+    }else {
+      this.onPage = 'login'
+    }
   }
 };
 
