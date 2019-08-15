@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/group-project-week6/client#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.28",
     "vue": "^2.6.10",

@@ -1,8 +1,9 @@
 <template>
     <div>
-        <navbar></navbar>
-        <login></login>
-        <loginForm></loginForm>
+        <navbar @l="isLoginA($event)"></navbar>
+        <login v-if="onPage == 'home'"></login>
+        <loginForm v-bind:onPage="onPage" @p="isLoginA('home')" ></loginForm>
+        <!-- v-else-if="onPage == 'register' " -->
     </div>
 
 </template>
@@ -22,6 +23,22 @@ export default {
       navbar,
       login,
       loginForm
+  },
+  data : {
+    isLogin : false,
+    onPage : 'home'
+  },
+  methods : {
+    isLoginA(page){
+      this.onPage = page
+    }
+  },
+  created(){
+    if(localStorage.getItem('token')){
+      this.onPage = 'home'
+    }else {
+      this.onPage = 'login'
+    }
   }
 };
 
