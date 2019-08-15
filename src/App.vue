@@ -1,27 +1,27 @@
 <template>
     <div>
-        <h1>{{ message }}</h1>
-        <tes></tes>
+        <navbar></navbar>
+        <login></login>
+        <loginForm></loginForm>
     </div>
 
 </template>
 
 <script>
 
-
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
-import tes from './Login.vue'
+import navbar from './navbar.vue'
+import login from './Login.vue'
+import loginForm from './loginForm.vue'
 export default {
   data() {
     return {
-      message: 'Hello world',
+      message: 'Hello world'
     };
   },
   components : {
-      tes
+      navbar,
+      login,
+      loginForm
   }
 };
 
