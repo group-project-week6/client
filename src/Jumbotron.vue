@@ -6,9 +6,10 @@
                 <p
                 class="text-center"
                 >Unggah, temukan dan bagikan file tanpa halangan!</p>
-                <div class="container" style="padding-top : 20px;">
-                    <input type="text" class="form-control text-center" style="background-color:#E8E8E8;"><br>
+                <div >
+                    <input type="text" class="form-control" ><br>
                 </div>
+                <p class="text-center">atau</p>
                 <p class="lead text-center">
                 <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
                 </p>
@@ -29,4 +30,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

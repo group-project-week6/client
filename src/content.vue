@@ -19,6 +19,6 @@ export default {
     .contentz{
         height: 1200px;
         width: 1900px ;
-        background-color: whitesmoke;
+        background-color: #e6e6e6;
     }
 </style>

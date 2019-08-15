@@ -44234,6 +44234,8 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -44254,38 +44256,9 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div")
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
-        _vm._v(" "),
-        _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
-          _vm._v("Card subtitle")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(
-            "Some quick example text to build on the card title and make up the bulk of the card's content."
-          )
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-          _vm._v("Card link")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-          _vm._v("Another link")
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
           return {
@@ -44345,6 +44318,7 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   data: function data() {
     return {
@@ -44383,21 +44357,15 @@ var staticRenderFns = [
             _vm._v("Unggah, temukan dan bagikan file tanpa halangan!")
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "container",
-              staticStyle: { "padding-top": "20px" }
-            },
-            [
-              _c("input", {
-                staticClass: "form-control text-center",
-                staticStyle: { "background-color": "#E8E8E8" },
-                attrs: { type: "text" }
-              }),
-              _c("br")
-            ]
-          ),
+          _c("div", [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "text" }
+            }),
+            _c("br")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "text-center" }, [_vm._v("atau")]),
           _vm._v(" "),
           _c("p", { staticClass: "lead text-center" }, [
             _c(
@@ -44769,7 +44737,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43039" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40151" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
