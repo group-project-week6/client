@@ -11931,5 +11931,10 @@ input[type="color"].form-control:disabled {
   background-color: #343a40;
 }
 
+.contentz[data-v-4cb373]{
+    height: 1200px;
+    width: 1900px ;
+    background-color: whitesmoke;
+}
 
 /*# sourceMappingURL=/main.1e43358e.css.map */
