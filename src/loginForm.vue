@@ -39,7 +39,7 @@
                 <hr>
                 <hr>
                 <center><span>Already have an account?</span></center>
-                <center><span>Login <a href="#" @click="registForm()" >here</a> </span></center>
+                <center><span>Login <a href="#" @click="pindahKeLogin()" >here</a> </span></center>
                 <hr>     
             </form>
         </div>
@@ -71,7 +71,8 @@ export default {
               username , password ,  email
           })
           .then(({data})=>{
-              this.$emit('p' , data)
+              this.regist = false
+              this.$emit('p' , 'login')
               console.log(data);
            })
            .catch(console.log)
@@ -83,7 +84,7 @@ export default {
           })
           .then(({data})=>{
               localStorage.setItem('token' , data.token)
-              this.$emit('p' , data)
+              this.$emit('p' , 'home')
               console.log(data);
               this.password2 = ""
               this.email2 = ""
@@ -92,6 +93,10 @@ export default {
       },
       registForm(){
           this.regist = !this.regist
+      },
+      pindahKeLogin(){
+          this.regist = false
+          this.$emit('p' , 'login')
       }
       
   }

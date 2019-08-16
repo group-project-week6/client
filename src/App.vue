@@ -2,7 +2,7 @@
     <div>
         <navbar @l="isLoginB($event)" v-bind:isLogin="isLogin"></navbar>
         <login v-if="onPage == 'home'" @l="isLoginA($event)" v-bind:isLogin="isLogin" v-bind:onPage="onPage"></login>
-        <loginForm v-bind:onPage="onPage" @p="isLoginA('home')" ></loginForm>
+        <loginForm v-bind:onPage="onPage" @p="isLoginA($event)" ></loginForm>
         <textList   v-if="onPage == 'home' && isLogin"></textList>
         <!-- v-else-if="onPage == 'register' " -->
     </div>
@@ -50,7 +50,7 @@ export default {
       // }else {
       //   this.onPage = page
       // }
-      this.isLogin = false
+      // this.isLogin = false
       this.onPage = page
     }
   },
