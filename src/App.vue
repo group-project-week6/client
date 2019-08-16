@@ -3,6 +3,7 @@
         <navbar @l="isLoginB($event)" v-bind:isLogin="isLogin"></navbar>
         <login v-if="onPage == 'home'" @l="isLoginA($event)" v-bind:isLogin="isLogin" v-bind:onPage="onPage"></login>
         <loginForm v-bind:onPage="onPage" @p="isLoginA('home')" ></loginForm>
+        <textList :listText="listText" v-if="onPage == 'home' && isLogin"></textList>
         <!-- v-else-if="onPage == 'register' " -->
     </div>
 
@@ -10,9 +11,11 @@
 
 <script>
 
+import axios from 'axios'
 import navbar from './navbar.vue'
 import login from './Login.vue'
-import loginForm from './loginForm.vue'
+import loginForm from './loginForm.vue';
+import textList from './textList';
 export default {
   data() {
     return {
@@ -22,11 +25,13 @@ export default {
   components : {
       navbar,
       login,
-      loginForm
+      loginForm,
+      textList
   },
   data : {
     isLogin : false,
-    onPage : 'home'
+    onPage : 'home',
+    listText : []
   },
   methods : {
     isLoginA(page){
@@ -51,12 +56,25 @@ export default {
   },
   created(){
     if(localStorage.getItem('token')){
-      this.isLogin = true
-      this.onPage = 'home'
-    }else {
-      this.isLogin = false
-      this.onPage = 'login'
-    }
+       axios({
+          method : 'GET',
+          url : 'http://localhost:3000/texts/all',
+          headers: {
+              token : localStorage.getItem('token')
+          }
+        })
+        .then((text)=>{
+          console.log(text , ' ===========')
+           this.listText = text
+           this.isLogin = true
+        this.onPage = 'home'
+          })
+        .catch(console.log)
+      }else {
+        this.isLogin = false
+        this.onPage = 'login'
+      }
+    
   }
 };
 

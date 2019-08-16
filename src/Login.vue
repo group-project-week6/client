@@ -41,7 +41,7 @@ export default {
     };
   },
   props : ['isLogin'],
-  methods : {
+  methods : { 
     RenderInput(){
       if(this.isLogin){
         this.CheckedInput =  true
