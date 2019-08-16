@@ -45,6 +45,7 @@ export default {
           console.log('kdsmfkdsmfkdsmfdkmfksmf')
           localStorage.clear()
           this.pindah_page('login')
+          this.$emit('l' , 'login')
       }
   }
 };
