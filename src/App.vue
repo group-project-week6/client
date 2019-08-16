@@ -3,7 +3,7 @@
         <navbar @l="isLoginB($event)" v-bind:isLogin="isLogin"></navbar>
         <login v-if="onPage == 'home'" @l="isLoginA($event)" v-bind:isLogin="isLogin" v-bind:onPage="onPage"></login>
         <loginForm v-bind:onPage="onPage" @p="isLoginA('home')" ></loginForm>
-        <textList :listText="listText" v-if="onPage == 'home' && isLogin"></textList>
+        <textList   v-if="onPage == 'home' && isLogin"></textList>
         <!-- v-else-if="onPage == 'register' " -->
     </div>
 
@@ -54,22 +54,10 @@ export default {
       this.onPage = page
     }
   },
-  created(){
+  mounted(){
     if(localStorage.getItem('token')){
-       axios({
-          method : 'GET',
-          url : 'http://localhost:3000/texts/all',
-          headers: {
-              token : localStorage.getItem('token')
-          }
-        })
-        .then((text)=>{
-          console.log(text , ' ===========')
-           this.listText = text
-           this.isLogin = true
-        this.onPage = 'home'
-          })
-        .catch(console.log)
+            this.isLogin = true
+            this.onPage = 'home'
       }else {
         this.isLogin = false
         this.onPage = 'login'

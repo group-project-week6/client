@@ -45992,37 +45992,43 @@ var _default = {
       }
     },
     addText: function addText() {
+      var _this = this;
+
       console.log(this.image, ' ini');
       var image = this.image,
           title = this.title;
-      console.log(JSON.stringify(image[0], null, 2), '  =   = == = = = ');
+      console.log('ini this', title);
       console.log('lfdmkmfdskmf');
       console.log(localStorage.getItem('token'));
+      var bodyFormData = new FormData();
+      bodyFormData.append('image', image[0]);
+      console.log(bodyFormData);
       (0, _axios.default)({
         method: 'POST',
         url: 'http://localhost:3000/images/upload',
-        data: {
-          image: image[0]
-        },
-        headers: {
-          token: localStorage.getItem('token')
+        data: bodyFormData,
+        config: {
+          headers: {
+            token: localStorage.getItem('token')
+          }
         }
-      }).then(function (link) {
-        // console.log(link)
-        console.log('elfmekfmekf'); // return axios({
-        //     method : 'POST',
-        //     url : 'http://localhost:3000/texts',
-        //     data : {
-        //         title , link
-        //     },
-        //     headers: {
-        //         token : localStorage.getItem('token')
-        //     }
-        // })
-      }).catch(console.log); // .then(data=>{
-      //   console.log('berhasil owowoowwo')
-      //   console.log(data)
-      // })
+      }).then(function (_ref) {
+        var data = _ref.data;
+        return (0, _axios.default)({
+          method: 'POST',
+          url: 'http://localhost:3000/texts',
+          data: {
+            title: _this.title,
+            link: data.link
+          },
+          headers: {
+            token: localStorage.getItem('token')
+          }
+        });
+      }).then(function (_ref2) {
+        var data = _ref2.data;
+        console.log(data);
+      }).catch(console.log);
     },
     previewFile: function previewFile() {
       this.image = this.$refs.myFiles.files; // console.log()
@@ -47435,9 +47441,9 @@ var _default = {
       tes: []
     };
   },
-  props: ['list'],
+  props: ['wkwk'],
   created: function created() {
-    console.log(Text);
+    console.log(this.wkwk.title, ' ===== ,,.,.,.,.,  ');
   }
 };
 exports.default = _default;
@@ -47453,38 +47459,31 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [_vm._v("{ { list.title } }")]),
-        _vm._v(" "),
-        _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
-          _vm._v("Card subtitle")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(
-            "Some quick example text to build on the card title and make up the bulk of the card's content."
-          )
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-          _vm._v("Card link")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-          _vm._v("Another link")
-        ])
+  return _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.wkwk.title))]),
+      _vm._v(" "),
+      _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+        _vm._v("Card subtitle")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [
+        _vm._v(
+          "Some quick example text to build on the card title and make up the bulk of the card's content."
+        )
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+        _vm._v("Card link")
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+        _vm._v("Another link")
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
           return {
@@ -47544,15 +47543,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = {
   data: function data() {
     return {
-      tes: []
+      tes: [],
+      listText: []
     };
   },
   components: {
     textListItem: _textListItem.default
   },
-  props: ['listText'],
   created: function created() {
-    console.log(this.listText, ' ===========');
+    var _this = this;
+
+    (0, _axios.default)({
+      method: 'GET',
+      url: 'http://localhost:3000/texts/all',
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    }).then(function (text) {
+      console.log(text, ' ===========');
+      _this.listText = text.data;
+      console.log(listText);
+    }).catch(console.log);
   }
 };
 exports.default = _default;
@@ -47571,8 +47582,8 @@ exports.default = _default;
   return _c(
     "div",
     { staticClass: "row" },
-    _vm._l(_vm.listText, function(list) {
-      return _c("textListItem", { key: list._id, attrs: { list: list } })
+    _vm._l(_vm.listText, function(wkwk) {
+      return _c("textListItem", { key: wkwk._id, attrs: { wkwk: wkwk } })
     }),
     1
   )
@@ -47670,22 +47681,10 @@ var _default = (_data$components$data = {
     this.isLogin = false;
     this.onPage = page;
   }
-}), _defineProperty(_data$components$data, "created", function created() {
-  var _this = this;
-
+}), _defineProperty(_data$components$data, "mounted", function mounted() {
   if (localStorage.getItem('token')) {
-    (0, _axios.default)({
-      method: 'GET',
-      url: 'http://localhost:3000/texts/all',
-      headers: {
-        token: localStorage.getItem('token')
-      }
-    }).then(function (text) {
-      console.log(text, ' ===========');
-      _this.listText = text;
-      _this.isLogin = true;
-      _this.onPage = 'home';
-    }).catch(console.log);
+    this.isLogin = true;
+    this.onPage = 'home';
   } else {
     this.isLogin = false;
     this.onPage = 'login';
@@ -47737,9 +47736,7 @@ exports.default = _default;
         }
       }),
       _vm._v(" "),
-      _vm.onPage == "home" && _vm.isLogin
-        ? _c("textList", { attrs: { listText: _vm.listText } })
-        : _vm._e()
+      _vm.onPage == "home" && _vm.isLogin ? _c("textList") : _vm._e()
     ],
     1
   )
@@ -47823,7 +47820,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38107" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32985" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

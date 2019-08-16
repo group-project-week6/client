@@ -1,8 +1,8 @@
 <template>
     <div class="row">
-        <textListItem  v-for="list in listText"
-        :key="list._id"
-        :list="list">
+        <textListItem  v-for="wkwk in listText"
+        :key="wkwk._id"
+        :wkwk="wkwk">
 
         </textListItem>
     </div>
@@ -14,15 +14,27 @@
     export default {
         data(){
             return {
-                tes : []
+                tes : [],
+                listText :  []
             }
         },
         components : {
             textListItem
         },
-        props : ['listText'],
         created(){
-            console.log(this.listText , ' ===========')
+            axios({
+          method : 'GET',
+          url : 'http://localhost:3000/texts/all',
+          headers: {
+              token : localStorage.getItem('token')
+          }
+        })
+        .then((text)=>{
+          console.log(text , ' ===========')
+           this.listText = text.data
+           console.log(listText)
+          })
+        .catch(console.log)
         }
     }
 </script>
