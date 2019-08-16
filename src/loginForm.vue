@@ -1,49 +1,45 @@
 <template>
 
-    <div class="col-sm">
-<div class = "card mt-4 ml-5 mr-5" style="background-color: rgb(214, 214, 198); width:40%" >
-        <div class="card-body" id="formLogin" >
-            <form >
+    <div class="col-sm a">
+<div class = "card  ml-auto mr-auto" style="background-color: rgb(214, 214, 198); width:40%" >
+        <div class="card-body" id="formLogin" v-if="onPage == 'login' && !regist" >
+            <form v-on:submit.prevent="login">
                 <div class="form-group">
                     <label for="email">E-mail:</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" id="email" v-model="email2">
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd">
+                    <input type="password" class="form-control" id="pwd" v-model="password2">
                 </div>
-                <center><button type="submit" class="btn btn-default" style="background-color: #0f0e0ec5; color : rgb(255, 255, 255);" v-on:click="login">login</button></center>
+                <center><button type="submit" class="btn btn-default" style="background-color: #0f0e0ec5; color : rgb(255, 255, 255);" >login</button></center>
                 <hr>
                 <hr>
                 <center><span>Doesn't have an account?</span></center>
-                <center><span>Register <a href="#" v-on:click="registerForm">here</a> </span></center>
+                <center><span>Register <a href="#" @click="registForm()" >here</a> </span></center>
                 <hr>     
             </form>
         </div>
 
-        <div class="card-body" id="formRegister" >
-            <form >
+        <div class="card-body" id="formRegister" v-if="regist" >
+            <form v-on:submit.prevent="register">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" v-model="username">
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail:</label>
-                    <input type="email" class="form-control">
+                    <input type="email" class="form-control" v-model="email">
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" v-model="password">
                 </div>
-                <div class="form-group">
-                    <label for="pwd">Birthday:</label>
-                    <input type="date" class="form-control">
-                </div>
-                <center><button type="submit" class="btn btn-default" style="background-color: #0f0e0ec5; color : rgb(255, 255, 255);" v-on:click="register">register</button> </center>
+                <center><button type="submit" class="btn btn-default" style="background-color: #0f0e0ec5; color : rgb(255, 255, 255);" >register</button> </center>
                 <hr>
                 <hr>
                 <center><span>Already have an account?</span></center>
-                <center><span>Login <a href="#" v-on:click="loginFormBack">here</a> </span></center>
+                <center><span>Login <a href="#" @click="pindahKeLogin()" >here</a> </span></center>
                 <hr>     
             </form>
         </div>
@@ -53,13 +49,57 @@
 </template>
 
 <script>
-
+import { log } from 'util';
+import axios from 'axios'
 export default {
   data() {
     return {
       message: 'ini component',
+      username : '',
+      password : '',
+      email : '',
+      email2 : '',
+      password2 : '',
+      regist : false,
     };
   },
+  props : ['onPage'],
+  methods : {
+      register(){
+          let { username ,  password ,  email } = this
+          axios.post('http://localhost:3000/users/register',{
+              username , password ,  email
+          })
+          .then(({data})=>{
+              this.regist = false
+              this.$emit('p' , 'login')
+              console.log(data);
+           })
+           .catch(console.log)
+      },
+      login(){
+          let {  password2 ,  email2 } = this
+          axios.post('http://localhost:3000/users/login',{
+             password  : password2,  email : email2
+          })
+          .then(({data})=>{
+              localStorage.setItem('token' , data.token)
+              this.$emit('p' , 'home')
+              console.log(data);
+              this.password2 = ""
+              this.email2 = ""
+           })
+           .catch(console.log)
+      },
+      registForm(){
+          this.regist = !this.regist
+      },
+      pindahKeLogin(){
+          this.regist = false
+          this.$emit('p' , 'login')
+      }
+      
+  }
 };
 
 </script>
