@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row pt-5 pl-5 pr-5">
         <textListItem  v-for="wkwk in listText"
         :key="wkwk._id"
         :wkwk="wkwk">
