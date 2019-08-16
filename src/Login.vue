@@ -52,38 +52,39 @@ export default {
     addText(){
       console.log(this.image , ' ini')
       let {  image ,  title} = this
-      console.log(JSON.stringify(image[0], null , 2) , '  =   = == = = = ')
+      console.log('ini this',title);
       console.log('lfdmkmfdskmf')
       console.log(localStorage.getItem('token'))
+
+      var bodyFormData = new FormData();
+      bodyFormData.append('image', image[0]); 
+      console.log(bodyFormData);
+
       axios({
           method : 'POST',
           url : 'http://localhost:3000/images/upload',
-          data : {
-              image :  image[0]
-          },
-          headers: {
+          data : bodyFormData
+          ,
+          config : {headers: {
               token : localStorage.getItem('token')
-          }
+          }}
       })
-      .then((  link  )=>{
-        // console.log(link)
-        console.log('elfmekfmekf')
-        // return axios({
-        //     method : 'POST',
-        //     url : 'http://localhost:3000/texts',
-        //     data : {
-        //         title , link
-        //     },
-        //     headers: {
-        //         token : localStorage.getItem('token')
-        //     }
-        // })
+      .then(( {data})=>{
+        return axios({
+            method : 'POST',
+            url : 'http://localhost:3000/texts',
+            data : {
+                title : this.title , link: data.link
+            },
+            headers: {
+                token : localStorage.getItem('token')
+            }
+        })
+      })
+      .then(({data})=>{
+        console.log(data);
       })
       .catch(console.log)
-        // .then(data=>{
-        //   console.log('berhasil owowoowwo')
-        //   console.log(data)
-        // })
     },
     previewFile(){
       this.image = this.$refs.myFiles.files
