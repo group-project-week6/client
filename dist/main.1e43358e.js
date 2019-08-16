@@ -48887,6 +48887,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -48963,20 +48968,19 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "pt-5",
-      staticStyle: {
-        "background-color": "#30353e",
-        color: "white",
-        height: "100vh"
-      }
-    },
-    [
-      !_vm.CheckedInput
-        ? _c(
+  return _c("div", [
+    !_vm.CheckedInput
+      ? _c("div", [
+          _c(
             "div",
+            {
+              staticClass: "pt-5",
+              staticStyle: {
+                "background-color": "#30353e",
+                color: "white",
+                height: "30vh"
+              }
+            },
             [
               _c(
                 "div",
@@ -49024,89 +49028,102 @@ exports.default = _default;
             ],
             1
           )
-        : _c("div", [
-            _c(
-              "div",
-              { staticClass: "pb-5" },
-              [
-                _c("center", [
-                  _c("h1", [_vm._v("Share Your Code with Developers")])
-                ]),
-                _vm._v(" "),
-                _c("center", [
-                  _c("h3", [
-                    _vm._v(
-                      "An online code sharing system for troubleshooting, teaching & more…"
-                    )
-                  ])
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "pb-5" }, [
+        ])
+      : _c("div", [
+          _c(
+            "div",
+            {
+              staticClass: "pt-5",
+              staticStyle: {
+                "background-color": "#30353e",
+                color: "white",
+                height: "50vh"
+              }
+            },
+            [
               _c(
-                "form",
-                {
-                  attrs: { enctype: "multipart/form-data" },
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.addText($event)
-                    }
-                  }
-                },
+                "div",
+                { staticClass: "pb-5" },
                 [
                   _c("center", [
-                    _c("h1", [_vm._v("Title: ")]),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.title,
-                          expression: "title"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        placeholder: "Your code title..."
-                      },
-                      domProps: { value: _vm.title },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.title = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("center", [
-                    _c("input", {
-                      ref: "myFiles",
-                      attrs: { type: "file", id: "file" },
-                      on: { change: _vm.previewFile }
-                    })
+                    _c("h1", [_vm._v("Share Your Code with Developers")])
                   ]),
                   _vm._v(" "),
                   _c("center", [
-                    _c("input", {
-                      staticClass: "btn-primaryyy",
-                      attrs: { type: "submit", value: "Share Your Code" }
-                    })
+                    _c("h3", [
+                      _vm._v(
+                        "An online code sharing system for troubleshooting, teaching & more…"
+                      )
+                    ])
                   ])
                 ],
                 1
-              )
-            ])
-          ])
-    ]
-  )
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "pb-5" }, [
+                _c(
+                  "form",
+                  {
+                    attrs: { enctype: "multipart/form-data" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.addText($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("center", [
+                      _c("h1", [_vm._v("Title: ")]),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.title,
+                            expression: "title"
+                          }
+                        ],
+                        attrs: {
+                          type: "text",
+                          placeholder: "Your code title..."
+                        },
+                        domProps: { value: _vm.title },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.title = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("center", [
+                      _c("input", {
+                        ref: "myFiles",
+                        attrs: { type: "file", id: "file" },
+                        on: { change: _vm.previewFile }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("center", [
+                      _c("input", {
+                        staticClass: "btn-primaryyy",
+                        attrs: { type: "submit", value: "Share Your Code" }
+                      })
+                    ])
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
+        ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50367,6 +50384,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -50391,29 +50412,43 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
-    _c("div", { staticClass: "card-body" }, [
-      _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.wkwk.title))]),
-      _vm._v(" "),
-      _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
-        _vm._v("Card subtitle")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "card-text" }, [
-        _vm._v(
-          "Some quick example text to build on the card title and make up the bulk of the card's content."
-        )
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-        _vm._v("Card link")
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-        _vm._v("Another link")
+  return _c(
+    "div",
+    { staticClass: "card ml-2 mb-3", staticStyle: { width: "18rem" } },
+    [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h5", { staticClass: "card-title" }, [
+          _vm._v(_vm._s(_vm.wkwk.title))
+        ]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+          _vm._v("uploaded by : " + _vm._s(_vm.wkwk.userId.username))
+        ]),
+        _vm._v(" "),
+        _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+          _vm._v("Check this file..")
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          { staticClass: "card-link", attrs: { href: "" + _vm.wkwk.link } },
+          [_vm._v("Visit link")]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+          _vm._v("Another link")
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "fb-share-button",
+          attrs: {
+            "data-href": "https://developers.facebook.com/docs/plugins/",
+            "data-layout": "button_count"
+          }
+        })
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50513,7 +50548,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row" },
+    { staticClass: "row pt-5 pl-5 pr-5" },
     _vm._l(_vm.listText, function(wkwk) {
       return _c("textListItem", { key: wkwk._id, attrs: { wkwk: wkwk } })
     }),
@@ -50756,7 +50791,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58948" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60811" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
