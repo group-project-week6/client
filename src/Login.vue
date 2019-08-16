@@ -67,7 +67,7 @@ export default {
 
       axios({
           method : 'POST',
-          url : 'http://localhost:3000/images/upload',
+          url : 'http://35.237.66.166/images/upload',
           data : bodyFormData
           ,
           config : {headers: {
@@ -77,7 +77,7 @@ export default {
       .then(( {data})=>{
         return axios({
             method : 'POST',
-            url : 'http://localhost:3000/texts',
+            url : 'http://35.237.66.166/texts',
             data : {
                 title : this.title , link: data.link
             },

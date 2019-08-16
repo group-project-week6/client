@@ -64,12 +64,12 @@ export default {
   methods : {
       deleteText : function(id,link){
         //    let id = "5d556b592892260dcf58ce8d"
-        let serverUrl = `http://localhost:3000/texts/${id}`
+        let serverUrl = `http://35.237.66.166/texts/${id}`
            let token = localStorage.getItem('token')
            console.log(token)
            axios({
                method : "DELETE",
-               url : `http://localhost:3000/texts/${id}`,
+               url : `http://35.237.66.166/texts/${id}`,
                headers : {
                    token
                }
@@ -80,7 +80,7 @@ export default {
                 console.log(response)
                axios({
                    method:'DELETE',
-                   url :`http://localhost:3000/images`,
+                   url :`http://35.237.66.166/images`,
                    headers : {
                        token 
                    },
