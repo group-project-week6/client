@@ -15,8 +15,8 @@
           </div>
           <div class="pb-5">
             <form  enctype="multipart/form-data" v-on:submit.prevent="addText"> 
-              <center><input type="text" v-model="title"></center>  <br>
-              <center> <input type="file" @change="previewFile" id="file" ref="myFiles"></center>
+              <center><h1>Title: </h1><input type="text" placeholder="Your code title..." v-model="title"></center>  <br>
+              <center> <input type="file"  @change="previewFile" id="file" ref="myFiles"></center>
               <!-- <center><a href="#" class="btn-primaryyy" @click="addText">Share Your Code</a><center> -->
               <center><input type="submit" class="btn-primaryyy" value="Share Your Code" ></center>
             </form>
@@ -83,6 +83,7 @@ export default {
       })
       .then(({data})=>{
         console.log(data);
+        this.title = ""
       })
       .catch(console.log)
     },
