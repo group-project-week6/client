@@ -1,8 +1,8 @@
 <template>
 
-    <div class="col-sm">
-<div class = "card mt-4 ml-5 mr-5" style="background-color: rgb(214, 214, 198); width:40%" >
-        <div class="card-body" id="formLogin" v-if="onPage == 'login' " >
+    <div class="col-sm a">
+<div class = "card  ml-auto mr-auto" style="background-color: rgb(214, 214, 198); width:40%" >
+        <div class="card-body" id="formLogin" v-if="onPage == 'login' && !regist" >
             <form v-on:submit.prevent="login">
                 <div class="form-group">
                     <label for="email">E-mail:</label>
@@ -16,12 +16,12 @@
                 <hr>
                 <hr>
                 <center><span>Doesn't have an account?</span></center>
-                <center><span>Register <a href="#" >here</a> </span></center>
+                <center><span>Register <a href="#" @click="registForm()" >here</a> </span></center>
                 <hr>     
             </form>
         </div>
 
-        <div class="card-body" id="formRegister" v-else-if="onPage == 'register' " >
+        <div class="card-body" id="formRegister" v-if="regist" >
             <form v-on:submit.prevent="register">
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -35,15 +35,11 @@
                     <label for="pwd">Password:</label>
                     <input type="password" class="form-control" v-model="password">
                 </div>
-                <div class="form-group">
-                    <label for="pwd">Birthday:</label>
-                    <input type="date" class="form-control">
-                </div>
                 <center><button type="submit" class="btn btn-default" style="background-color: #0f0e0ec5; color : rgb(255, 255, 255);" >register</button> </center>
                 <hr>
                 <hr>
                 <center><span>Already have an account?</span></center>
-                <center><span>Login <a href="#" >here</a> </span></center>
+                <center><span>Login <a href="#" @click="registForm()" >here</a> </span></center>
                 <hr>     
             </form>
         </div>
@@ -63,7 +59,8 @@ export default {
       password : '',
       email : '',
       email2 : '',
-      password2 : ''
+      password2 : '',
+      regist : false,
     };
   },
   props : ['onPage'],
@@ -88,9 +85,15 @@ export default {
               localStorage.setItem('token' , data.token)
               this.$emit('p' , data)
               console.log(data);
+              this.password2 = ""
+              this.email2 = ""
            })
            .catch(console.log)
+      },
+      registForm(){
+          this.regist = !this.regist
       }
+      
   }
 };
 
