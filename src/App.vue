@@ -80,7 +80,7 @@ export default {
   created(){
     axios({
       method: "GET",
-      url: "http://localhost:3000/texts/all",
+      url: "http://35.237.66.166/texts/all",
       headers: {
         token: localStorage.getItem("token")
       }
@@ -93,7 +93,7 @@ export default {
         }
         return axios({
           method: "GET",
-          url: "http://localhost:3000/texts/",
+          url: "http://35.237.66.166/texts/",
           headers: {
             token: localStorage.getItem("token")
           }

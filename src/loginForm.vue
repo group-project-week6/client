@@ -67,7 +67,7 @@ export default {
   methods : {
       register(){
           let { username ,  password ,  email } = this
-          axios.post('http://localhost:3000/users/register',{
+          axios.post('http://35.237.66.166/users/register',{
               username , password ,  email
           })
           .then(({data})=>{
@@ -79,7 +79,7 @@ export default {
       },
       login(){
           let {  password2 ,  email2 } = this
-          axios.post('http://localhost:3000/users/login',{
+          axios.post('http://35.237.66.166/users/login',{
              password  : password2,  email : email2
           })
           .then(({data})=>{
