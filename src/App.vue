@@ -1,9 +1,10 @@
 <template>
     <div>
         <navbar @l="isLoginB($event)" v-bind:isLogin="isLogin"></navbar>
-        <login v-if="onPage == 'home'" @l="isLoginA($event)" v-bind:isLogin="isLogin" v-bind:onPage="onPage"></login>
+        <login v-if="onPage == 'home'" @l="isLoginA($event)" v-bind:isLogin="isLogin" v-bind:onPage="onPage" @br="kirim($event)"></login>
         <loginForm v-bind:onPage="onPage" @p="isLoginA($event)" ></loginForm>
-        <textList   v-if="onPage == 'home' && isLogin"></textList>
+        <textList   v-if="onPage == 'home' && isLogin && !objTemp" v-bind:objTemp="objTemp"></textList>
+        <textList   v-else></textList>
         <!-- v-else-if="onPage == 'register' " -->
     </div>
 
@@ -31,7 +32,8 @@ export default {
   data : {
     isLogin : false,
     onPage : 'home',
-    listText : []
+    listText : [],
+    objTemp : {}
   },
   methods : {
     isLoginA(page){
@@ -52,6 +54,10 @@ export default {
       // }
       // this.isLogin = false
       this.onPage = page
+    },
+    kirim(data){
+      console.log(  data, 'ini data nya di root =-=-=-=-=3-23=2-2=3-2=3-2=32-32=3-2=3-2=3-2=')
+      this.objTemp = data
     }
   },
   mounted(){

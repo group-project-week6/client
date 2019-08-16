@@ -48887,6 +48887,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -48941,7 +48946,10 @@ var _default = {
         });
       }).then(function (_ref2) {
         var data = _ref2.data;
-        console.log(data);
+        console.log(data, ' ===-=-=-=========================-=-=-=-=3-=-=');
+
+        _this.$emit('br', data);
+
         _this.title = "";
       }).catch(console.log);
     },
@@ -48963,20 +48971,19 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "pt-5",
-      staticStyle: {
-        "background-color": "#30353e",
-        color: "white",
-        height: "100vh"
-      }
-    },
-    [
-      !_vm.CheckedInput
-        ? _c(
+  return _c("div", [
+    !_vm.CheckedInput
+      ? _c("div", [
+          _c(
             "div",
+            {
+              staticClass: "pt-5",
+              staticStyle: {
+                "background-color": "#30353e",
+                color: "white",
+                height: "30vh"
+              }
+            },
             [
               _c(
                 "div",
@@ -49024,89 +49031,102 @@ exports.default = _default;
             ],
             1
           )
-        : _c("div", [
-            _c(
-              "div",
-              { staticClass: "pb-5" },
-              [
-                _c("center", [
-                  _c("h1", [_vm._v("Share Your Code with Developers")])
-                ]),
-                _vm._v(" "),
-                _c("center", [
-                  _c("h3", [
-                    _vm._v(
-                      "An online code sharing system for troubleshooting, teaching & more…"
-                    )
-                  ])
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "pb-5" }, [
+        ])
+      : _c("div", [
+          _c(
+            "div",
+            {
+              staticClass: "pt-5",
+              staticStyle: {
+                "background-color": "#30353e",
+                color: "white",
+                height: "50vh"
+              }
+            },
+            [
               _c(
-                "form",
-                {
-                  attrs: { enctype: "multipart/form-data" },
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.addText($event)
-                    }
-                  }
-                },
+                "div",
+                { staticClass: "pb-5" },
                 [
                   _c("center", [
-                    _c("h1", [_vm._v("Title: ")]),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.title,
-                          expression: "title"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        placeholder: "Your code title..."
-                      },
-                      domProps: { value: _vm.title },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.title = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("center", [
-                    _c("input", {
-                      ref: "myFiles",
-                      attrs: { type: "file", id: "file" },
-                      on: { change: _vm.previewFile }
-                    })
+                    _c("h1", [_vm._v("Share Your Code with Developers")])
                   ]),
                   _vm._v(" "),
                   _c("center", [
-                    _c("input", {
-                      staticClass: "btn-primaryyy",
-                      attrs: { type: "submit", value: "Share Your Code" }
-                    })
+                    _c("h3", [
+                      _vm._v(
+                        "An online code sharing system for troubleshooting, teaching & more…"
+                      )
+                    ])
                   ])
                 ],
                 1
-              )
-            ])
-          ])
-    ]
-  )
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "pb-5" }, [
+                _c(
+                  "form",
+                  {
+                    attrs: { enctype: "multipart/form-data" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.addText($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("center", [
+                      _c("h1", [_vm._v("Title: ")]),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.title,
+                            expression: "title"
+                          }
+                        ],
+                        attrs: {
+                          type: "text",
+                          placeholder: "Your code title..."
+                        },
+                        domProps: { value: _vm.title },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.title = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("center", [
+                      _c("input", {
+                        ref: "myFiles",
+                        attrs: { type: "file", id: "file" },
+                        on: { change: _vm.previewFile }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("center", [
+                      _c("input", {
+                        staticClass: "btn-primaryyy",
+                        attrs: { type: "submit", value: "Share Your Code" }
+                      })
+                    ])
+                  ],
+                  1
+                )
+              ])
+            ]
+          )
+        ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50375,15 +50395,48 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
       tes: []
     };
   },
-  props: ['wkwk'],
+  props: ["wkwk"],
   created: function created() {
-    console.log(this.wkwk.title, ' ===== ,,.,.,.,.,  ');
+    console.log(this.wkwk.title, " ===== ,,.,.,.,.,  ");
   }
 };
 exports.default = _default;
@@ -50400,53 +50453,53 @@ exports.default = _default;
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "fb-root" } }, [
-    _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [
-          _vm._v(_vm._s(_vm.wkwk.title))
-        ]),
-        _vm._v(" "),
-        _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
-          _vm._v("Card subtitle")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(
-            "Some quick example text to build on the card title and make up the bulk of the card's content."
+    _c(
+      "div",
+      { staticClass: "card ml-2 mb-3", staticStyle: { width: "18rem" } },
+      [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "card-title" }, [
+            _vm._v(_vm._s(_vm.wkwk.title))
+          ]),
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+            _vm._v("uploaded by : " + _vm._s(_vm.wkwk.userId.username))
+          ]),
+          _vm._v(" "),
+          _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+            _vm._v("Check this file..")
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            { staticClass: "card-link", attrs: { href: "" + _vm.wkwk.link } },
+            [_vm._v("Visit link")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "fb-share-button",
+              attrs: {
+                href: "" + _vm.wkwk.link,
+                "data-layout": "button_count",
+                "data-size": "large"
+              }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "fb-xfbml-parse-ignore",
+                  attrs: { target: "_blank", href: "" + _vm.wkwk.link }
+                },
+                [_vm._v("Bagikan")]
+              )
+            ]
           )
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-          _vm._v("Card link")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-          _vm._v("Another link")
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "fb-share-button",
-            attrs: {
-              href: "" + _vm.wkwk.link,
-              "data-layout": "button_count",
-              "data-size": "large"
-            }
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "fb-xfbml-parse-ignore",
-                attrs: { target: "_blank", href: "" + _vm.wkwk.link }
-              },
-              [_vm._v("Bagikan")]
-            )
-          ]
-        )
-      ])
-    ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -50482,7 +50535,7 @@ render._withStripped = true
       
       }
     })();
-},{"axios":"node_modules/axios/index.js","_css_loader":"../../../../.nvm/versions/node/v12.3.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/textList.vue":[function(require,module,exports) {
+},{"axios":"node_modules/axios/index.js","_css_loader":"../../../../.nvm/versions/node/v12.3.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/TextListItem2.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50492,10 +50545,52 @@ exports.default = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
-var _textListItem = _interopRequireDefault(require("./textListItem"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50513,23 +50608,217 @@ var _default = {
       listText: []
     };
   },
+  props: ['item'],
+  created: function created() {// axios({
+    //   method: "GET",
+    //   url: "http://localhost:3000/texts/",
+    //   headers: {
+    //     token: localStorage.getItem("token")
+    //   }
+    // })
+    //   .then(text => {
+    //     console.log(text, " ===========");
+    //     this.listText = text.data;
+    //   })
+    //   .catch(console.log);
+    // console.log(this.wkwk.title, " ===== ,,.,.,.,.,  ");
+  }
+};
+exports.default = _default;
+        var $781b17 = exports.default || module.exports;
+      
+      if (typeof $781b17 === 'function') {
+        $781b17 = $781b17.options;
+      }
+    
+        /* template */
+        Object.assign($781b17, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", [
+      _c("div", { attrs: { id: "fb-root" } }, [
+        _c(
+          "div",
+          { staticClass: "card ml-2 mb-3", staticStyle: { width: "18rem" } },
+          [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(_vm._s(_vm.item.title))
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+                _vm._v("uploaded by : " + _vm._s(_vm.item.userId.username))
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+                _vm._v("Check this file..")
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "card-link",
+                  attrs: { href: "" + _vm.item.link }
+                },
+                [_vm._v("Visit link")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "fb-share-button",
+                  attrs: {
+                    href: "" + _vm.item.link,
+                    "data-layout": "button_count",
+                    "data-size": "large"
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "fb-xfbml-parse-ignore",
+                      attrs: { target: "_blank", href: "" + _vm.item.link }
+                    },
+                    [_vm._v("Bagikan")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "submit", value: "delete" }
+                  })
+                ]
+              )
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-781b17",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$781b17', $781b17);
+          } else {
+            api.reload('$781b17', $781b17);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"axios":"node_modules/axios/index.js","_css_loader":"../../../../.nvm/versions/node/v12.3.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/textList.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _textListItem = _interopRequireDefault(require("./textListItem"));
+
+var _TextListItem = _interopRequireDefault(require("./TextListItem2"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  data: function data() {
+    return {
+      tes: [],
+      listText: [],
+      listText2: []
+    };
+  },
+  props: ['objTemp'],
   components: {
-    textListItem: _textListItem.default
+    textListItem: _textListItem.default,
+    TextListItem2: _TextListItem.default
   },
   created: function created() {
     var _this = this;
 
     (0, _axios.default)({
-      method: 'GET',
-      url: 'http://localhost:3000/texts/all',
+      method: "GET",
+      url: "http://localhost:3000/texts/all",
       headers: {
-        token: localStorage.getItem('token')
+        token: localStorage.getItem("token")
       }
     }).then(function (text) {
-      console.log(text, ' ===========');
+      console.log(text, " ===========");
       _this.listText = text.data;
-      console.log(listText);
+
+      if (_this.objTemp) {
+        _this.listText.push(_this.objTemp);
+      }
+
+      return (0, _axios.default)({
+        method: "GET",
+        url: "http://localhost:3000/texts/",
+        headers: {
+          token: localStorage.getItem("token")
+        }
+      }).then(function (text2) {
+        console.log(text2, " lfldfdlmfdkfm=p=-=-=-=-=-=-=");
+
+        if (_this.objTemp) {
+          _this.listText2.push(_this.objTemp);
+        }
+
+        _this.listText2 = text2.data; //   console.log(listText);
+      });
     }).catch(console.log);
+  },
+  computed: {
+    fn: function fn() {
+      if (this.objTemp) {
+        this.listText.unshift(objTemp);
+        this.listText2.unshift(objTemp);
+      }
+    }
+  },
+  watch: {
+    li: function li() {
+      this;
+    }
   }
 };
 exports.default = _default;
@@ -50545,14 +50834,25 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row" },
-    _vm._l(_vm.listText, function(wkwk) {
-      return _c("textListItem", { key: wkwk._id, attrs: { wkwk: wkwk } })
-    }),
-    1
-  )
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "row pt-5 pl-5 pr-5" },
+      _vm._l(_vm.listText, function(wkwk) {
+        return _c("textListItem", { key: wkwk._id, attrs: { wkwk: wkwk } })
+      }),
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row pt-5 pl-5 pr-5" },
+      _vm._l(_vm.listText2, function(item) {
+        return _c("TextListItem2", { key: item._id, attrs: { item: item } })
+      }),
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50587,7 +50887,7 @@ render._withStripped = true
       
       }
     })();
-},{"axios":"node_modules/axios/index.js","./textListItem":"src/textListItem.vue","_css_loader":"../../../../.nvm/versions/node/v12.3.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/App.vue":[function(require,module,exports) {
+},{"axios":"node_modules/axios/index.js","./textListItem":"src/textListItem.vue","./TextListItem2":"src/TextListItem2.vue","_css_loader":"../../../../.nvm/versions/node/v12.3.1/lib/node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.runtime.esm.js"}],"src/App.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50626,7 +50926,8 @@ var _default = (_data$components$data = {
 }, _defineProperty(_data$components$data, "data", {
   isLogin: false,
   onPage: 'home',
-  listText: []
+  listText: [],
+  objTemp: {}
 }), _defineProperty(_data$components$data, "methods", {
   isLoginA: function isLoginA(page) {
     console.log('here');
@@ -50646,6 +50947,10 @@ var _default = (_data$components$data = {
     // }
     // this.isLogin = false
     this.onPage = page;
+  },
+  kirim: function kirim(data) {
+    console.log(data, 'ini data nya di root =-=-=-=-=3-23=2-2=3-2=3-2=32-32=3-2=3-2=3-2=');
+    this.objTemp = data;
   }
 }), _defineProperty(_data$components$data, "mounted", function mounted() {
   if (localStorage.getItem('token')) {
@@ -50688,6 +50993,9 @@ exports.default = _default;
             on: {
               l: function($event) {
                 return _vm.isLoginA($event)
+              },
+              br: function($event) {
+                return _vm.kirim($event)
               }
             }
           })
@@ -50702,7 +51010,9 @@ exports.default = _default;
         }
       }),
       _vm._v(" "),
-      _vm.onPage == "home" && _vm.isLogin ? _c("textList") : _vm._e()
+      _vm.onPage == "home" && _vm.isLogin && !_vm.objTemp
+        ? _c("textList", { attrs: { objTemp: _vm.objTemp } })
+        : _c("textList")
     ],
     1
   )
@@ -50790,7 +51100,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41461" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34563" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

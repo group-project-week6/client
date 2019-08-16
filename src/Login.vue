@@ -1,31 +1,36 @@
 <template>
-    <div class="pt-5" style="background-color: #30353e; color: white ;height:100vh">
-        <div v-if="!CheckedInput">
-          <div class="pb-5">
-            <center><h1>Share Your Code with Developers</h1></center>
-            <center><h3>An online code sharing system for troubleshooting, teaching & more…</h3>
-          </div>
-          <center><a href="#" class="btn-primaryyy" @click="RenderInput">Share Code Now</a><center>
-          <center><p><small>Share code for free.</small></p></center>
-        </div>
-        <div v-else>
-          <div class="pb-5">
-            <center><h1>Share Your Code with Developers</h1></center>
-            <center><h3>An online code sharing system for troubleshooting, teaching & more…</h3>
-          </div>
-          <div class="pb-5">
-            <form  enctype="multipart/form-data" v-on:submit.prevent="addText"> 
-              <center><h1>Title: </h1><input type="text" placeholder="Your code title..." v-model="title"></center>  <br>
-              <center> <input type="file"  @change="previewFile" id="file" ref="myFiles"></center>
-              <!-- <center><a href="#" class="btn-primaryyy" @click="addText">Share Your Code</a><center> -->
-              <center><input type="submit" class="btn-primaryyy" value="Share Your Code" ></center>
-            </form>
-            
-          </div>
-          <!-- <center><a href="#" class="btn-primaryyy" @click="addText">Share Your Code</a><center> -->
-        </div>
-    </div>   
+    <div>
     
+        <div v-if="!CheckedInput">
+          <div class="pt-5" style="background-color: #30353e; color: white ;height:30vh">
+              <div class="pb-5">
+                <center><h1>Share Your Code with Developers</h1></center>
+                <center><h3>An online code sharing system for troubleshooting, teaching & more…</h3>
+              </div>
+              <center><a href="#" class="btn-primaryyy" @click="RenderInput">Share Code Now</a><center>
+              <center><p><small>Share code for free.</small></p></center>
+            </div>
+        </div>
+
+        <div v-else>
+          <div class="pt-5" style="background-color: #30353e; color: white ;height:50vh">
+            <div class="pb-5">
+              <center><h1>Share Your Code with Developers</h1></center>
+              <center><h3>An online code sharing system for troubleshooting, teaching & more…</h3>
+            </div>
+            <div class="pb-5">
+              <form  enctype="multipart/form-data" v-on:submit.prevent="addText"> 
+                <center><h1>Title: </h1><input type="text" placeholder="Your code title..." v-model="title"></center>  <br>
+                <center> <input type="file"  @change="previewFile" id="file" ref="myFiles"></center>
+                <!-- <center><a href="#" class="btn-primaryyy" @click="addText">Share Your Code</a><center> -->
+                <center><input type="submit" class="btn-primaryyy" value="Share Your Code" ></center>
+              </form>
+            <!-- <center><a href="#" class="btn-primaryyy" @click="addText">Share Your Code</a><center> -->
+            </div>
+          </div>
+        </div>
+
+    </div>
     
 </template>
 
@@ -82,7 +87,8 @@ export default {
         })
       })
       .then(({data})=>{
-        console.log(data);
+        console.log(data , ' ===-=-=-=========================-=-=-=-=3-=-=');
+        this.$emit('br' , data)
         this.title = ""
       })
       .catch(console.log)
