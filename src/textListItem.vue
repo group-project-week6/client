@@ -7,7 +7,7 @@
         <h6 class="card-subtitle mb-2 text-muted">Check this file..</h6>
         <a :href="'' + wkwk.link" class="card-link">Visit link</a>
        <div
-            class="fb-share-button"
+            class="fb-share-button card-link"
             :href="'' + wkwk.link"
             data-layout="button_count"
             data-size="large"

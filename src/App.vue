@@ -3,8 +3,8 @@
         <navbar @l="isLoginB($event)" v-bind:isLogin="isLogin"></navbar>
         <login v-if="onPage == 'home'" @l="isLoginA($event)" v-bind:isLogin="isLogin" v-bind:onPage="onPage" @br="kirim($event)"></login>
         <loginForm v-bind:onPage="onPage" @p="isLoginA($event)" ></loginForm>
-        <textList   v-if="onPage == 'home' && isLogin && !objTemp" v-bind:objTemp="objTemp"></textList>
-        <textList   v-else></textList>
+        <textList    v-bind:objTemp="objTemp" v-bind:listText="listText" v-bind:listText2="listText2" @lol="filterdataText($event)"></textList>
+        <!-- <textList   v-else></textList> -->
         <!-- v-else-if="onPage == 'register' " -->
     </div>
 
@@ -33,7 +33,8 @@ export default {
     isLogin : false,
     onPage : 'home',
     listText : [],
-    objTemp : {}
+    objTemp : {},
+    listText2 : []
   },
   methods : {
     isLoginA(page){
@@ -56,8 +57,14 @@ export default {
       this.onPage = page
     },
     kirim(data){
-      console.log(  data, 'ini data nya di root =-=-=-=-=3-23=2-2=3-2=3-2=32-32=3-2=3-2=3-2=')
-      this.objTemp = data
+      console.log(  data, 'ini data nya di root =-=-=-=-=3-23=2-2=3-2=3-2=32-32=3-2=3-2=3-2= cccccc')
+      // this.objTemp = data
+      this.listText2.unshift(data)
+      this.listText.unshift(data)
+    },
+    filterdataText(id){
+      this.listText = this.listText.filter(el=> el._id != id  )
+      this.listText2 = this.listText2.filter(el=> el._id != id  )
     }
   },
   mounted(){
@@ -69,6 +76,37 @@ export default {
         this.onPage = 'login'
       }
     
+  },
+  created(){
+    axios({
+      method: "GET",
+      url: "http://localhost:3000/texts/all",
+      headers: {
+        token: localStorage.getItem("token")
+      }
+    })
+      .then(text => {
+        console.log(text, " ===========");
+        this.listText = text.data;
+        if(this.objTemp){
+            this.listText.push(this.objTemp)
+        }
+        return axios({
+          method: "GET",
+          url: "http://localhost:3000/texts/",
+          headers: {
+            token: localStorage.getItem("token")
+          }
+        }).then(text2 => {
+          console.log(text2, " lfldfdlmfdkfm=p=-=-=-=-=-=-=");
+          if(this.objTemp){
+            this.listText2.push(this.objTemp)
+            }
+          this.listText2 = text2.data;
+        //   console.log(listText);
+        });
+      })
+      .catch(console.log);
   }
 };
 

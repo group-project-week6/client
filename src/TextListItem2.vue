@@ -14,8 +14,7 @@
               data-layout="button_count"
               data-size="large"
             >
-              <a target="_blank" :href="'' + item.link" class="fb-xfbml-parse-ignore">Bagikan</a>
-              <input type="submit" class="btn btn-danger" value="delete"  />
+              <input type="submit" class="btn btn-danger" value="delete" @click="deleteText(item._id,item.link)"  />
             </div>
           </div>
         </div>
@@ -62,6 +61,50 @@ export default {
     };
   },
   props : ['item'],
+  methods : {
+      deleteText : function(id,link){
+        //    let id = "5d556b592892260dcf58ce8d"
+        let serverUrl = `http://localhost:3000/texts/${id}`
+           let token = localStorage.getItem('token')
+           console.log(token)
+           axios({
+               method : "DELETE",
+               url : `http://localhost:3000/texts/${id}`,
+               headers : {
+                   token
+               }
+           }).
+           then(response=>{
+
+            //    let link = link
+                console.log(response)
+               axios({
+                   method:'DELETE',
+                   url :`http://localhost:3000/images`,
+                   headers : {
+                       token 
+                   },
+                   data : {
+                       link
+                   }
+               }).
+               then(response=>{
+                   console.log(response , ' 99999999999999999')
+                   console.log("berhasil dihapus")
+                   this.$emit('pol' , id)
+               })
+               .catch(err=>{
+                   throw new Error("hapus data di storage gagal")
+               })
+           }).catch(err=>{
+               console.log('ldkfmkdmfkdmfkmf----')
+               console.log(err)
+           })
+
+
+
+       }
+  },
   created() {
     // axios({
     //   method: "GET",

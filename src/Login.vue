@@ -19,11 +19,11 @@
               <center><h3>An online code sharing system for troubleshooting, teaching & more…</h3>
             </div>
             <div class="pb-5">
-              <form  enctype="multipart/form-data" v-on:submit.prevent="addText"> 
+              <form  enctype="multipart/form-data" v-on:submit.prevent="addText" class="col"> 
                 <center><h1>Title: </h1><input type="text" placeholder="Your code title..." v-model="title"></center>  <br>
-                <center> <input type="file"  @change="previewFile" id="file" ref="myFiles"></center>
+                <center> <input type="file"  @change="previewFile" id="file" ref="myFiles" class="col-md-2" ></center>
                 <!-- <center><a href="#" class="btn-primaryyy" @click="addText">Share Your Code</a><center> -->
-                <center><input type="submit" class="btn-primaryyy" value="Share Your Code" ></center>
+                <center><input type="submit" class="btn-primaryyy mt-4" value="Share Your Code" ></center>
               </form>
             <!-- <center><a href="#" class="btn-primaryyy" @click="addText">Share Your Code</a><center> -->
             </div>

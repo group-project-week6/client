@@ -49067,6 +49067,7 @@ exports.default = _default;
                 _c(
                   "form",
                   {
+                    staticClass: "col",
                     attrs: { enctype: "multipart/form-data" },
                     on: {
                       submit: function($event) {
@@ -49108,6 +49109,7 @@ exports.default = _default;
                     _c("center", [
                       _c("input", {
                         ref: "myFiles",
+                        staticClass: "col-md-2",
                         attrs: { type: "file", id: "file" },
                         on: { change: _vm.previewFile }
                       })
@@ -49115,7 +49117,7 @@ exports.default = _default;
                     _vm._v(" "),
                     _c("center", [
                       _c("input", {
-                        staticClass: "btn-primaryyy",
+                        staticClass: "btn-primaryyy mt-4",
                         attrs: { type: "submit", value: "Share Your Code" }
                       })
                     ])
@@ -50479,7 +50481,7 @@ exports.default = _default;
           _c(
             "div",
             {
-              staticClass: "fb-share-button",
+              staticClass: "fb-share-button card-link",
               attrs: {
                 href: "" + _vm.wkwk.link,
                 "data-layout": "button_count",
@@ -50600,7 +50602,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
 var _default = {
   data: function data() {
     return {
@@ -50609,6 +50610,46 @@ var _default = {
     };
   },
   props: ['item'],
+  methods: {
+    deleteText: function deleteText(id, link) {
+      var _this = this;
+
+      //    let id = "5d556b592892260dcf58ce8d"
+      var serverUrl = "http://localhost:3000/texts/".concat(id);
+      var token = localStorage.getItem('token');
+      console.log(token);
+      (0, _axios.default)({
+        method: "DELETE",
+        url: "http://localhost:3000/texts/".concat(id),
+        headers: {
+          token: token
+        }
+      }).then(function (response) {
+        //    let link = link
+        console.log(response);
+        (0, _axios.default)({
+          method: 'DELETE',
+          url: "http://localhost:3000/images",
+          headers: {
+            token: token
+          },
+          data: {
+            link: link
+          }
+        }).then(function (response) {
+          console.log(response, ' 99999999999999999');
+          console.log("berhasil dihapus");
+
+          _this.$emit('pol', id);
+        }).catch(function (err) {
+          throw new Error("hapus data di storage gagal");
+        });
+      }).catch(function (err) {
+        console.log('ldkfmkdmfkdmfkmf----');
+        console.log(err);
+      });
+    }
+  },
   created: function created() {// axios({
     //   method: "GET",
     //   url: "http://localhost:3000/texts/",
@@ -50677,18 +50718,14 @@ exports.default = _default;
                   }
                 },
                 [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "fb-xfbml-parse-ignore",
-                      attrs: { target: "_blank", href: "" + _vm.item.link }
-                    },
-                    [_vm._v("Bagikan")]
-                  ),
-                  _vm._v(" "),
                   _c("input", {
                     staticClass: "btn btn-danger",
-                    attrs: { type: "submit", value: "delete" }
+                    attrs: { type: "submit", value: "delete" },
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteText(_vm.item._id, _vm.item.link)
+                      }
+                    }
                   })
                 ]
               )
@@ -50760,64 +50797,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 var _default = {
   data: function data() {
     return {
-      tes: [],
-      listText: [],
-      listText2: []
+      tes: [] //   listText: [],
+      //   listText2: []
+
     };
   },
-  props: ['objTemp'],
+  props: ['objTemp', 'listText', 'listText2'],
   components: {
     textListItem: _textListItem.default,
     TextListItem2: _TextListItem.default
   },
   created: function created() {
-    var _this = this;
-
-    (0, _axios.default)({
-      method: "GET",
-      url: "http://localhost:3000/texts/all",
-      headers: {
-        token: localStorage.getItem("token")
-      }
-    }).then(function (text) {
-      console.log(text, " ===========");
-      _this.listText = text.data;
-
-      if (_this.objTemp) {
-        _this.listText.push(_this.objTemp);
-      }
-
-      return (0, _axios.default)({
-        method: "GET",
-        url: "http://localhost:3000/texts/",
-        headers: {
-          token: localStorage.getItem("token")
-        }
-      }).then(function (text2) {
-        console.log(text2, " lfldfdlmfdkfm=p=-=-=-=-=-=-=");
-
-        if (_this.objTemp) {
-          _this.listText2.push(_this.objTemp);
-        }
-
-        _this.listText2 = text2.data; //   console.log(listText);
-      });
-    }).catch(console.log);
+    console.log(this.listText, this.listText2, ' =- -=- =- =- =-');
   },
-  computed: {
-    fn: function fn() {
-      if (this.objTemp) {
-        this.listText.unshift(objTemp);
-        this.listText2.unshift(objTemp);
-      }
-    }
-  },
-  watch: {
-    li: function li() {
-      this;
+  methods: {
+    deletetext: function deletetext(id) {
+      this.$emit('lol', id);
     }
   }
 };
@@ -50834,25 +50833,41 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "row pt-5 pl-5 pr-5" },
-      _vm._l(_vm.listText, function(wkwk) {
-        return _c("textListItem", { key: wkwk._id, attrs: { wkwk: wkwk } })
-      }),
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row pt-5 pl-5 pr-5" },
-      _vm._l(_vm.listText2, function(item) {
-        return _c("TextListItem2", { key: item._id, attrs: { item: item } })
-      }),
-      1
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _c("center", [_c("h1", { staticClass: "pt-5" }, [_vm._v("All Codes")])]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row pt-5 pl-5 pr-5" },
+        _vm._l(_vm.listText, function(wkwk) {
+          return _c("textListItem", { key: wkwk._id, attrs: { wkwk: wkwk } })
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c("center", [_c("h1", { staticClass: "pt-5" }, [_vm._v("Your Codes")])]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row pt-5 pl-5 pr-5" },
+        _vm._l(_vm.listText2, function(item) {
+          return _c("TextListItem2", {
+            key: item._id,
+            attrs: { item: item },
+            on: {
+              pol: function($event) {
+                return _vm.deletetext($event)
+              }
+            }
+          })
+        }),
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50927,7 +50942,8 @@ var _default = (_data$components$data = {
   isLogin: false,
   onPage: 'home',
   listText: [],
-  objTemp: {}
+  objTemp: {},
+  listText2: []
 }), _defineProperty(_data$components$data, "methods", {
   isLoginA: function isLoginA(page) {
     console.log('here');
@@ -50949,8 +50965,18 @@ var _default = (_data$components$data = {
     this.onPage = page;
   },
   kirim: function kirim(data) {
-    console.log(data, 'ini data nya di root =-=-=-=-=3-23=2-2=3-2=3-2=32-32=3-2=3-2=3-2=');
-    this.objTemp = data;
+    console.log(data, 'ini data nya di root =-=-=-=-=3-23=2-2=3-2=3-2=32-32=3-2=3-2=3-2= cccccc'); // this.objTemp = data
+
+    this.listText2.unshift(data);
+    this.listText.unshift(data);
+  },
+  filterdataText: function filterdataText(id) {
+    this.listText = this.listText.filter(function (el) {
+      return el._id != id;
+    });
+    this.listText2 = this.listText2.filter(function (el) {
+      return el._id != id;
+    });
   }
 }), _defineProperty(_data$components$data, "mounted", function mounted() {
   if (localStorage.getItem('token')) {
@@ -50960,6 +50986,39 @@ var _default = (_data$components$data = {
     this.isLogin = false;
     this.onPage = 'login';
   }
+}), _defineProperty(_data$components$data, "created", function created() {
+  var _this = this;
+
+  (0, _axios.default)({
+    method: "GET",
+    url: "http://localhost:3000/texts/all",
+    headers: {
+      token: localStorage.getItem("token")
+    }
+  }).then(function (text) {
+    console.log(text, " ===========");
+    _this.listText = text.data;
+
+    if (_this.objTemp) {
+      _this.listText.push(_this.objTemp);
+    }
+
+    return (0, _axios.default)({
+      method: "GET",
+      url: "http://localhost:3000/texts/",
+      headers: {
+        token: localStorage.getItem("token")
+      }
+    }).then(function (text2) {
+      console.log(text2, " lfldfdlmfdkfm=p=-=-=-=-=-=-=");
+
+      if (_this.objTemp) {
+        _this.listText2.push(_this.objTemp);
+      }
+
+      _this.listText2 = text2.data; //   console.log(listText);
+    });
+  }).catch(console.log);
 }), _data$components$data);
 
 exports.default = _default;
@@ -51010,9 +51069,18 @@ exports.default = _default;
         }
       }),
       _vm._v(" "),
-      _vm.onPage == "home" && _vm.isLogin && !_vm.objTemp
-        ? _c("textList", { attrs: { objTemp: _vm.objTemp } })
-        : _c("textList")
+      _c("textList", {
+        attrs: {
+          objTemp: _vm.objTemp,
+          listText: _vm.listText,
+          listText2: _vm.listText2
+        },
+        on: {
+          lol: function($event) {
+            return _vm.filterdataText($event)
+          }
+        }
+      })
     ],
     1
   )
@@ -51100,7 +51168,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34563" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39807" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
